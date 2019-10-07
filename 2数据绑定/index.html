@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <script type="text/javascript" src="../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <p v-text="msg"></p><!--文本绑定-->
+            <p>hello {{msg}}</p><!--大括号表达式 同文本绑定-->
+            <p v-html="msg"></p><!--链接绑定-->
+            <img :src="imgUrl"><!--强制绑定属性-->
+            <img v-bind:src="imgUrl">
+            <button @click="test">test1</button><!--事件监听-->
+            <button v-on:click="test2('test2')">test2</button>
+            <button @click="test2(msg)">test1</button>
+        </div>
+        <script type="text/javascript">
+        const vm=new new Vue({
+            el:'#app',
+            data:{
+                msg:'<a href="thhp://www.baidu.com">baidu</a>',
+                imgUrl:'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png'
+            },
+            methods: {
+                test(){
+                    alert('test1')
+                },
+                test2(content){
+                    alert(content)
+                }
+            }
+        })
+        </script>
+    </body>
+</html>

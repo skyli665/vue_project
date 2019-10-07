@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="demo">
+            <p v-if="ok">true</p><!--if-else会移除标签-->
+            <p v-else>false</p>
+            <p v-show="ok">true</p>
+            <!--show会隐藏标签，源码中能看到-->
+            <p v-show="!ok">false</p>
+            <button @click="ok=!ok">切换</button>
+        </div>
+        <script type="text/javascript">
+        const vm=new Vue({
+            el:'#demo',
+            data:{
+                ok:false
+            }
+        })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="demo">
+            <!--遍历数组-->
+            <ul>
+                <li v-for="(p, index) in persons" :key="index">
+                    {{index}}----{{p.name}}----{{p.age}}
+                    ----
+                    <button @click="deleteP(index)">删除</button>
+                    ----
+                    <button @click="updateP(index,{name:'cat',age:'20'})">更新</button>
+                </li>
+            </ul>
+            <!--遍历对象-->
+            <ul>
+                <li v-for="(item,key) in persons[1] " :key="key">
+                    {{item}}----{{key}}
+                </li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+        const vm=new Vue({
+            el:'#demo',
+            data:{
+                persons:[//vue本身只监视了对象本身，没有监视对象中的数据
+                    {name:'Tom',age:18},
+                    {name:'Jack',age:18},
+                    {name:'Lily',age:18},
+                    {name:'Bob',age:18},
+                ]
+            },
+            methods: {
+                deleteP(index){
+                    this.persons.splice(index,1)
+                },
+                updateP(index,newP){
+                    this.persons.splice(index,1,newP)
+                }
+            }
+        })
+        </script>
+    </body>
+</html>
