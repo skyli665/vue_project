@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="demo">
+            <form action="#" @submit.prevent="handleSubmit">
+                <span>用户名:</span>
+                <input type="text" v-model="username"><br>
+                <span>密码:</span>
+                <input type="password" v-model="pwd"><br>
+                <span>性别:</span>
+                <input type="radio" id="female">
+                <label for="female">女</label>
+                <input type="radio" id="male">
+                <label for="male">男</label>
+
+                <span>爱好</span>
+                <input type="checkbox" id="basket">
+                <label for="basket">篮球</label>
+                <input type="checkbox" id="foot">
+                <label for="foot">足球</label>
+
+            </form>
+        </div>
+        <script type="text/javascript">
+        const vm=new Vue({
+            el:'#demo',
+            data:{
+                username:'',
+                pwd:''
+            },
+            methods: {
+                handleSubmit(){
+                    console.log(this.username,this.pwd)
+                }
+            }
+        })
+        </script>
+    </body>
+</html>
