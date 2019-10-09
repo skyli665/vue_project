@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="demo">
+            <button @click="destroyVM">destroy vm</button>
+            <p v-show="isShow">测试 显示隐藏</p>
+        </div>
+        <script type="text/javascript">
+        const vm=new Vue({
+            el:'#demo',
+            data:{
+                isShow:true,
+                intervalId:''
+            },
+            mounted() {//初始化调用1次
+                this.intervalId=setInterval(()=>{//静态函数，使用外部this
+                    console.log('--------')
+                    this.isShow=!this.isShow
+                },1000)
+            },
+            beforeDestroy() {//销毁前调用1次
+                //清楚定时器
+                clearInterval(this.intervalId)
+            },
+            methods: {
+                destroyVM(){
+                    //销毁vm
+                    this.$destroy()
+                }
+            }
+        })
+        </script>
+    </body>
+</html>
